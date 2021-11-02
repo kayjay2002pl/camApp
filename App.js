@@ -1,21 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import React, { Component } from 'react';
+import { Switch, View, Text, PropTypes, Image, FlatList, Alert } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+
+//import MyButton from './MyButton';
+import { AsyncStorage } from "react-native"
+//import Listitem from './ListItem';
+import { Dimensions } from "react-native";
+import * as MediaLibrary from "expo-media-library";
+
+
+
+class Main extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      number: 0,
+      items: [],
+      boolik: false,
+      perm: false,
+      isloading: false,
+      any: false
+    };
+    this.abc = this.abc.bind(this);
+  }
+  componentDidMount = async () => {
+    let { status } = await MediaLibrary.requestPermissionsAsync();
+    if (status !== 'granted') {
+      alert('brak uprawnień do czytania image-ów z galerii')
+      this.abc()
+    }
+  }
+  abc = async () => {
+    let obj = await MediaLibrary.getAssetsAsync({
+      first: 100,           // ilość pobranych assetów
+      mediaType: 'photo'    // typ pobieranych danych, photo jest domyślne
+    })
+
+    alert(JSON.stringify(obj.assets, null, 4))
+  }
+
+  render() {
+    return (
+      <Text></Text>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Main;
