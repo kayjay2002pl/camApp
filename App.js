@@ -1,51 +1,82 @@
-
-import React, { Component } from 'react';
-import { Switch, View, Text, PropTypes, Image, FlatList, Alert } from 'react-native';
-import { ActivityIndicator } from 'react-native';
-
-//import MyButton from './MyButton';
-import { AsyncStorage } from "react-native"
-//import Listitem from './ListItem';
-import { Dimensions } from "react-native";
-import * as MediaLibrary from "expo-media-library";
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Main from "./components/Main"
+import CameraScreen from "./components/CameraScreen"
+import Gallery from "./components/Gallery"
+import BigPhoto from "./components/BigPhoto"
 
 
+const Stack = createNativeStackNavigator();
 
-class Main extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: 0,
-      items: [],
-      boolik: false,
-      perm: false,
-      isloading: false,
-      any: false
-    };
-    this.abc = this.abc.bind(this);
-  }
-  componentDidMount = async () => {
-    let { status } = await MediaLibrary.requestPermissionsAsync();
-    if (status !== 'granted') {
-      alert('brak uprawnień do czytania image-ów z galerii')
-      this.abc()
-    }
-  }
-  abc = async () => {
-    let obj = await MediaLibrary.getAssetsAsync({
-      first: 100,           // ilość pobranych assetów
-      mediaType: 'photo'    // typ pobieranych danych, photo jest domyślne
-    })
-
-    alert(JSON.stringify(obj.assets, null, 4))
-  }
-
-  render() {
-    return (
-      <Text></Text>
-    );
-  }
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={Main}
+          options={{
+            title: 'Home',
+            headerStyle: {
+              backgroundColor: '#FF5722',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFFFFF'
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Gallery"
+          component={Gallery}
+          options={{
+            title: 'Gallery',
+            headerStyle: {
+              backgroundColor: '#FF5722',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFFFFF'
+            },
+          }}
+        />
+        <Stack.Screen
+          name="CameraScreen"
+          component={CameraScreen}
+          options={{
+            title: 'Camera',
+            headerStyle: {
+              backgroundColor: '#FF5722',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFFFFF'
+            },
+          }}
+        />
+        <Stack.Screen
+          name="BigPhoto"
+          component={BigPhoto}
+          options={{
+            title: 'Preview',
+            headerStyle: {
+              backgroundColor: '#FF5722',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: '#FFFFFF'
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
-export default Main;
+export default App;

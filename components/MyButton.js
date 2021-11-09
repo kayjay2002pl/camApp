@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-class CircleButton extends Component {
+class MyButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +25,7 @@ class CircleButton extends Component {
         );
     }
 }
-CircleButton.propTypes = {
+MyButton.propTypes = {
     title: PropTypes.string.isRequired,
     func: PropTypes.func.isRequired,
     size: PropTypes.number.isRequired,
@@ -37,9 +37,8 @@ const styles = {
         borderWidth: 1,
         borderColor: '#BDBDBD',
         padding: 5,
-        borderRadius: 50,
-        backgroundColor: "white"
+        borderRadius: 10,
 
     }
 }
-export default CircleButton;
+export default MyButton;
