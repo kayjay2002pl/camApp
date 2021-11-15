@@ -18,8 +18,8 @@ class MyButton extends Component {
 
     render() {
         return (
-            <TouchableOpacity onPress={this.handleClick}>
-                <View style={styles.butt}><Text>{this.props.title}</Text></View>
+            <TouchableOpacity onPress={this.handleClick} style={{ width: "30%" }}>
+                <View style={styles.butt}><Text style={{ fontSize: 16 }}>{this.props.title}</Text></View>
 
             </TouchableOpacity>
         );
@@ -38,6 +38,7 @@ const styles = {
         borderColor: '#BDBDBD',
         padding: 5,
         borderRadius: 10,
+
 
     }
 }

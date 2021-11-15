@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Touchable, TouchableOpacity } from 'react-native';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import Test from './Test';
 
 class Main extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class Main extends Component {
     render() {
         return (
             <TouchableOpacity style={styles.main} onPress={this.handleClick}></TouchableOpacity>
+            //<Test></Test>
         );
     }
 }

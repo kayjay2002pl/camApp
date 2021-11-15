@@ -18,8 +18,21 @@ class CircleButton extends Component {
 
     render() {
         return (
-            <TouchableOpacity onPress={this.handleClick}>
-                <View style={styles.butt}><Text>{this.props.title}</Text></View>
+            <TouchableOpacity onPress={this.handleClick} style={{ height: 100, justifyContent: "center" }}>
+                <View style={{
+                    margin: 5,
+                    borderWidth: 1,
+                    borderColor: '#BDBDBD',
+                    padding: 5,
+                    borderRadius: 50,
+                    backgroundColor: "white",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: this.props.size,
+                    height: this.props.size
+                }}
+
+                ><Text>{this.props.title}</Text></View>
 
             </TouchableOpacity>
         );
@@ -30,7 +43,7 @@ CircleButton.propTypes = {
     func: PropTypes.func.isRequired,
     size: PropTypes.number.isRequired,
 };
-const styles = {
+const styles = StyleSheet.create({
     butt: {
 
         margin: 5,
@@ -38,8 +51,11 @@ const styles = {
         borderColor: '#BDBDBD',
         padding: 5,
         borderRadius: 50,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        justifyContent: "center",
+        alignItems: "center"
+
 
     }
-}
+})
 export default CircleButton;

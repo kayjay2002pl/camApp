@@ -6,6 +6,7 @@ import Main from "./components/Main"
 import CameraScreen from "./components/CameraScreen"
 import Gallery from "./components/Gallery"
 import BigPhoto from "./components/BigPhoto"
+import Test from './components/Test';
 
 
 const Stack = createNativeStackNavigator();
